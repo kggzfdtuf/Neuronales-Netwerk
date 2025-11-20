@@ -29,5 +29,5 @@ class NeuralNetwork():
             output_input[j] += (x[0], x[1])
         for i in range(len(ouput_inputs)):
             for k in range(2):
-                x[k] += self.weights["hidden-output"][i][j][0] * (hidden_inputs[i][0] + self.biases["hidden"][i][0])
+                x[k] += self.weights["hidden-output"][i][0][0] * (hidden_inputs[i][0] + self.biases["hidden"][i][0])
         output += (x[0], x[1])
