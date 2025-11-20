@@ -17,10 +17,17 @@ class NeuralNetwork():
             self = old_brain.mutate()
                     #inputs = [pos, vel, acc, raytracing 5 times]
     def compute(self, inputs):
-        for i in range(len(inputs)):
-            for j in range(len(self.weights["input-hidden"][i])):
-                hidden_inputs[j] += (x, y)
-        for i in range(len(hidden_inputs)):
-            for j in range(len(self.weights["hidden-output"][i])):
-                output += self.weights["hidden-output"][i][j] * (inputs[i] + self.biases["hidden"][i])
-        return output + self.biases["output"][0]
+        for j in range(len(self.weights["input-hidden"][i])):
+            for i in range(len(inputs)):
+                for k in range(2):
+                    x[k] += self.weights["input-hidden"][i][j][0] * (inputs[i][0] + self.biases["input][i][0])
+            hidden_inputs[j] += (x[0], x[1])
+        for j in range(len(self.weights["hidden-output"][i])):
+            for i in range(len(hidden_inputs)):
+                for k in range(2):
+                    x[k] += self.weights["hidden-output"][i][j][0] * (hidden_inputs[i][0] + self.biases["hidden"][i][0])
+            output_input[j] += (x[0], x[1])
+        for i in range(len(ouput_inputs)):
+            for k in range(2):
+                x[k] += self.weights["hidden-output"][i][j][0] * (hidden_inputs[i][0] + self.biases["hidden"][i][0])
+        output += (x[0], x[1])
