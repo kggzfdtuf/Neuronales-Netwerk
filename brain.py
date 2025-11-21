@@ -15,7 +15,7 @@ class NeuralNetwork():
             self.biases["output"][0] = random.random(-1, 1)
         else:
             self = old_brain.mutate()
-                    #inputs = [pos, vel, acc, raytracing 5 times]
+                    #inputs = [vel, acc, raytracing 6 times]
     def compute(self, inputs):
         for j in range(len(self.weights["input-hidden"][i])):
             for i in range(len(inputs)):
